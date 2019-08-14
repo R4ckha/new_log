@@ -7,7 +7,10 @@ abstract class Model
     // Création de la connexion
     private static function setBdd()
     {   
-        
+        self::$bdd = new PDO("mysql:host=;dbname=;charset=utf8", '', '', [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
     }
 
     // Récupère la connexion
