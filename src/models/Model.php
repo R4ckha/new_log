@@ -8,7 +8,6 @@ abstract class Model
     private static function setBdd()
     {   
         
-        
     }
 
     // Récupère la connexion
