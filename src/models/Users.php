@@ -1,18 +1,32 @@
 <?php
-
+/**
+ *  Class Users
+ * 
+ */
 class Users
-{
+{   
+    /** @var int $id */
     private $id;
+
+    /** @var str $name */
     private $name;
+
+    /** @var int $idCategorie */
     private $idCategorie;
 
-    public function __construct(array $data)
+
+    /**
+     * Users constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = [])
     {
         $this->hydrate($data);
     }
 
-    // Ici set.ucfirst fout la merde
-    // A demain, bisous
+    /**
+     * @param array[string]mixed $data
+     */
     public function hydrate(array $data)
     {
         foreach($data as $key => $value){
@@ -24,7 +38,10 @@ class Users
         }
     }
 
-    public function setIdUser($id)
+    /**
+     * @param int $id
+     */
+    public function setIdUser(int $id): void
     {
         $id = (int) $id;
 
@@ -33,14 +50,20 @@ class Users
         }
     }
 
-    public function setName($name)
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
     {
         if (is_string($name)) {
             $this->name = $name;
         }
     }
 
-    public function setFkNlUsersCategories($idCategorie)
+    /**
+     * @param int $id
+     */
+    public function setFkNlUsersCategories(int $idCategorie): void
     {
         $idCategorie = (int) $idCategorie;
 
@@ -48,16 +71,27 @@ class Users
             $this->idCategorie = $idCategorie;
         }
     }
-
-    public function getId()
+    
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
-    public function getName()
+
+    /**
+     * @return string
+     */
+    public function getName(): string
     {
         return $this->name;
     }
-    public function getIdCategorie()
+
+    /**
+     * @return int
+     */
+    public function getIdCategorie(): int
     {
         return $this->idCategorie;
     }
