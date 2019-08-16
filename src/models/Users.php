@@ -15,16 +15,16 @@ class Users
     // A demain, bisous
     public function hydrate(array $data)
     {
-        foreach ($data as $key => $value) {
-            $method = 'set'.ucfirst($key);
-
+        foreach($data as $key => $value){
+            $method = 'set'.(str_replace('_', '', ucwords($key, '_')));
+            
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }
         }
     }
 
-    public function setId($id)
+    public function setIdUser($id)
     {
         $id = (int) $id;
 
@@ -40,7 +40,7 @@ class Users
         }
     }
 
-    public function setIdCategorie($idCategorie)
+    public function setFkNlUsersCategories($idCategorie)
     {
         $idCategorie = (int) $idCategorie;
 
