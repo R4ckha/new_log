@@ -11,7 +11,7 @@ abstract class Model
     // Création de la connexion
     private static function setBdd()
     {   
-        self::$bdd = new PDO("mysql:host=;dbname=;charset=utf8", '', '', [
+        self::$bdd = new PDO("mysql:host=".MYSQL_HOST.";dbname=".MYSQL_DATABASE.";charset=utf8", MYSQL_USER, MYSQL_PASSWORD, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
