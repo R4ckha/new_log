@@ -17,10 +17,11 @@ class ControllerHome
     private function users()
     {
         $this->userManager = new UserManager();
-        //$users = $this->userManager->getUser();
+        $usersArray = $this->userManager->getUser();
         
         $user = $this->userManager->isConnectedUser();
-        if ( $user["isConnected"] ) {
+
+        if ( $user["isConnected"] || true ) {
             require_once 'src/views/viewHome.php';
         } else {
             require_once 'src/views/viewErrorConnect.php';

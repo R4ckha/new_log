@@ -5,30 +5,20 @@
  */
 class Users
 {   
-    /** @var int $id */
-    private $id;
+    public $id;
 
-    /** @var str $name */
-    private $name;
+    public $name;
 
-    /** @var int $idCategorie */
-    private $idCategorie;
+    public $idCategorie;
 
-
-    /**
-     * Users constructor.
-     * @param array $data
-     */
-    public function __construct(array $data = [])
+    public function __construct($data = [])
     {
         $this->hydrate($data);
     }
 
-    /**
-     * @param array[string]mixed $data
-     */
-    public function hydrate(array $data)
-    {
+
+    public function hydrate($data)
+    {        
         foreach($data as $key => $value){
             $method = 'set'.(str_replace('_', '', ucwords($key, '_')));
             
@@ -38,32 +28,22 @@ class Users
         }
     }
 
-    /**
-     * @param int $id
-     */
-    public function setIdUser(int $id): void
+    public function setIdUser($id)
     {
         $id = (int) $id;
-
         if ($id > 0) {
             $this->id = $id;
         }
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
+    public function setName($name)
     {
         if (is_string($name)) {
             $this->name = $name;
         }
     }
 
-    /**
-     * @param int $id
-     */
-    public function setFkNlUsersCategories(int $idCategorie): void
+    public function setFkNlUsersCategories($idCategorie)
     {
         $idCategorie = (int) $idCategorie;
 
@@ -71,28 +51,21 @@ class Users
             $this->idCategorie = $idCategorie;
         }
     }
-    
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
+    /*
+    public function getId()
+    {   
+        var_dump($this->id);
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @return int
-     */
-    public function getIdCategorie(): int
+    public function getIdCategorie()
     {
         return $this->idCategorie;
     }
+    */
 }

@@ -3,7 +3,7 @@
 class UserManager extends Model
 {
     public function getUser()
-    {
+    {   
         return $this->getAll("nl_users", "Users");
     }
 

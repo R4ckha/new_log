@@ -7,7 +7,7 @@ abstract class Model
     private static $acces;
     private static $groupId;
     private static $pseudo;
-    
+
     // Création de la connexion
     private static function setBdd()
     {   
@@ -22,8 +22,8 @@ abstract class Model
     {
         if (self::$bdd == null) {
             self::setBdd();
-            return self::$bdd;
         }
+        return self::$bdd;
     }
 
     protected function getAll($table, $object)
@@ -32,13 +32,12 @@ abstract class Model
         $var = [];
         $req = $this->getBdd()->prepare('SELECT * FROM '.$table.' ORDER BY id_user desc');
         $req->execute();
-        
         while($data = $req->fetch()){
             $var[] = new $object($data);
         }
+        
         $req->closeCursor();
         return $var;
-
     }
 
     protected function getUserSession($sessionId)
@@ -55,12 +54,9 @@ abstract class Model
         $requestSession = $this->getBdd()->prepare($query);
         $requestSession->bindValue(':sessionId', $sessionId, PDO::PARAM_STR);
         $requestSession->execute();
-        
         $userInfo = $requestSession->fetch();
-
-        // echo "<pre>";
-        // var_dump($userInfo);
-        // echo "</pre>";
+        $requestSession->closeCursor();
+        
         if ( isset($userInfo['user_id']) && $userInfo['user_id'] != 1 ) {
             if ( $_SERVER['REMOTE_ADDR'] === $userInfo['session_ip'] && $userInfo['group_id'] === "9") {
                 $_SESSION['pseudo'] = $userInfo['pseudo'];
