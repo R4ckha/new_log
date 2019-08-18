@@ -19,13 +19,12 @@ class Router
             
             // Controleur chargé selon action utilisateur
             if (isset($_GET['url'])) {
-                var_dump("setted url");
                 $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
                 $controller = ucfirst(strtolower($url[0]));
                 $controllerClass =  'Controller'.$controller;
                 $controllerFile = 'src/controllers/'.$controllerClass.'.php';
-
-                if (file_exist($controllerFile)) {
+            
+                if (file_exists($controllerFile)) {
                     require_once($controllerFile);
                     $this->control = new $controllerClass($url);
                 } else {

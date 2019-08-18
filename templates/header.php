@@ -9,6 +9,18 @@
 </head>
 <body>
     <nav>
-        <a href="#" class="home-button"><?php echo TITLE; ?></a>
-        <a href="#" class="disconnect-button">deconnexion( <?php echo $user['pseudo']; ?> )</a>
+        <div class="nav-left">
+            <a href="index.php" class="home-button"><?php echo TITLE; ?></a>
+            <div class="dropdown">
+                <button class="menu-button">menu</button>
+                <div class="dropdown-content">
+                    <a href="/_impAdmin/imperalog/premium">premium</a>
+                    <a href="/_impAdmin/imperalog/communaute">communauté</a>
+                    <a href="#">autre lien</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="disconnect-button">deconnexion( <?php echo $user['pseudo']; ?> )</a>
+        </div>
     </nav>

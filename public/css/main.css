@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Material+Icons&display=swap');
+
 
 body {
     margin: 0;
     padding: 0;
+}
+
+a {
+    font-family: 'Montserrat', sans-serif;
 }
 
 nav {
@@ -14,8 +19,14 @@ nav {
     background: #f8f9fa;
 }
 
-.home-button{
-    font-family: 'Montserrat', sans-serif;
+.nav-left {
+    display: flex;
+    align-items: center;
+    height: inherit;
+}
+
+.home-button {
+    padding-bottom: 4px;
     font-size: 1.5em;
     color: rgba(0,0,0,.9);
     text-transform: capitalize;
@@ -23,8 +34,50 @@ nav {
     outline: none;
 }
 
-.disconnect-button{
-    font-family: "montserrat";
+.menu-button {
+    padding-left: 30px;
+    font-size: 1em;
+    color: #181819;
+    background: none;
+    border: none;
+    text-decoration: none;
+}
+
+.disconnect-button {
     color: #44b0ff;
     text-decoration: none;
+}
+
+.dropdown {
+    display: flex;
+    position: relative;
+    height: inherit;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 50px;
+}
+
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding-left: 10px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.90);
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
 }
