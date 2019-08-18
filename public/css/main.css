@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 30px;
+    background: #f8f9fa;
+}
+
+.home-button{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    color: rgba(0,0,0,.9);
+    text-transform: capitalize;
+    text-decoration: none;
+    outline: none;
+}
+
+.disconnect-button{
+    font-family: "montserrat";
+    color: #44b0ff;
+    text-decoration: none;
+}

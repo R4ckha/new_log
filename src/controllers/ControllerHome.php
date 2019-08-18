@@ -21,7 +21,7 @@ class ControllerHome
         
         $user = $this->userManager->isConnectedUser();
 
-        if ( $user["isConnected"] || true ) {
+        if ( $user["isConnected"] ) {
             require_once 'src/views/viewHome.php';
         } else {
             require_once 'src/views/viewErrorConnect.php';

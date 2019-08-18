@@ -1,9 +1,7 @@
 <?php
+include("./templates/header.php");
 
-echo "Hello {$user['pseudo']}<br>";
-?>
-
-<?php
 foreach ($usersArray as $value) {
     echo $value->name."<br>";
 }
+include("./templates/footer.php");
