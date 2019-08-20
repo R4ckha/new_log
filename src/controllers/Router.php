@@ -7,23 +7,23 @@ class Router
 
     public function routeRequest()
     {
-       
+
         try {
-            
+
             // Autoloading des classes models
             spl_autoload_register(function($class){
                 require_once 'src/models/'.$class.'.php';
             });
 
             $url = '';
-            
+
             // Controleur chargé selon action utilisateur
             if (isset($_GET['url'])) {
                 $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
                 $controller = ucfirst(strtolower($url[0]));
                 $controllerClass =  'Controller'.$controller;
                 $controllerFile = 'src/controllers/'.$controllerClass.'.php';
-            
+
                 if (file_exists($controllerFile)) {
                     require_once($controllerFile);
                     $this->control = new $controllerClass($url);
