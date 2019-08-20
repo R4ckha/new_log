@@ -6,16 +6,13 @@
 class Users
 {   
     public $id;
-
     public $name;
-
     public $idCategorie;
 
     public function __construct($data = [])
     {
         $this->hydrate($data);
     }
-
 
     public function hydrate($data)
     {        

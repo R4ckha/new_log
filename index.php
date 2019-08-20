@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'src/conf.php';
 require 'src/controllers/Router.php';
 

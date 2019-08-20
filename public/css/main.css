@@ -78,6 +78,43 @@ nav {
 }
 
 .dropdown:hover .dropdown-content {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+}
+
+@media screen and (max-width: 640px) {
+	nav {
+		flex-direction: column;
+		padding: 0;
+		height: 100px;
+	}
+
+	.nav-left {
+		flex-direction: column;
+		justify-content: space-around;
+	}
+
+	.nav-right {
+		display: none;
+	}
+
+	.home-button {
+		padding: 0;
+	}
+
+	.menu-button {
+		padding: 0;
+		position:
+	}
+
+	.dropdown {
+		position: unset;
+		height: unset;
+	}
+
+	.dropdown-content {
+		top: 100px;
+		left: 0;
+		width: 100vw;
+	}
 }
