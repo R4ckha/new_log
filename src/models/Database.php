@@ -1,8 +1,5 @@
 <?php
-/**
- *  Class Database
- * 
- */
+
 abstract class Database
 {
 

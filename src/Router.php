@@ -9,14 +9,7 @@ class Router
     {
 
         try {
-
-            // Autoloading des classes models
-            spl_autoload_register(function($class){
-                require_once 'src/models/'.$class.'.php';
-            });
-
             $url = '';
-
             // Controleur chargé selon action utilisateur
             if (isset($_GET['url'])) {
                 $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));

@@ -1,8 +1,5 @@
 <?php
-/**
- *  Class Users
- * 
- */
+
 class Users
 {   
     public $id;

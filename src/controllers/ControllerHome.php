@@ -6,7 +6,7 @@ class ControllerHome
     private $view;
 
     public function __construct($url)
-    {   
+    {      
         // Si l'url est paramétré et qu'elle contient plus d'un argument
         if (isset($url) && count($url) > 1) {
             throw new Exception('Page introuvable');
@@ -19,7 +19,6 @@ class ControllerHome
     private function users()
     {
         $this->userManager = new UserManager();
-
         // récupère tout les utilisateurs (inutiles ici)
         $usersArray = $this->userManager->getUser();
 
