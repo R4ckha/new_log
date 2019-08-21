@@ -43,12 +43,12 @@ class Premium
 
     public function setName($name)
     {
-        $this->name = (string) $name;
+        $this->name = (string) ucfirst($name);
     }
 
     public function setLastName($lastName)
     {
-        $this->lastName = (string) $lastName;
+        $this->lastName = (string) ucfirst($lastName);
     }
 
     public function setPseudo($pseudo)
@@ -59,36 +59,37 @@ class Premium
     public function setDonationAmount($donationAmount)
     {
         if (is_numeric($donationAmount)) {
-            $this->donationAmount = (float) $donationAmount;
+            $this->donationAmount = number_format($donationAmount, 2) . " €";
         }
 
     }
 
     public function setPaymentDate($paymentDate)
     {
-        $this->paymentDate = $paymentDate;
+        $this->paymentDate = date('d-m-Y', strtotime($paymentDate));
     }
 
     public function setPremiumDuration($premiumDuration)
     {
         if ($premiumDuration > 0) {
-            $this->premiumDuration = (int) $premiumDuration;
+            $this->premiumDuration = (int) $premiumDuration . " mois";
         }
     }
 
     public function setEndPremium($endPremium)
     {
-        $this->endPremium = $endPremium;
+        $this->endPremium = date('d-m-Y', strtotime($endPremium));
     }
 
     public function setIsDecisionMaker($isDecisionMaker)
-    {
-        $this->isDecisionMaker = (boolean) $isDecisionMaker;
+    {   
+        $this->isDecisionMaker = (boolean) $isDecisionMaker ? "oui" : "non";
+        
     }
 
     public function setSlashBack($slashBack)
     {
-        $this->slashBack = (boolean) $slashBack;
+        $this->slashBack = (boolean) $slashBack ? "oui" : "non";
     }
 
     public function setNumberHome($numberHome)

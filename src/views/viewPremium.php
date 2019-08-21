@@ -1,4 +1,2 @@
 <?php
-include("./templates/header.php");
-echo $content;
-include("./templates/footer.php");
+include("./templates/main_template.php");

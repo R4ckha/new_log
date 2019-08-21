@@ -20,23 +20,24 @@ class ControllerPremium
 
     public function setTable($datas)
     {
-        $content = "<table>
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>prénom</th>
-                                <th>nom</th>
-                                <th>pseudo</th>
-                                <th>montant du don</th>
-                                <th>date du don</th>
-                                <th>durée du premium</th>
-                                <th>fin du premium</th>
-                                <th>décisionnaire</th>
-                                <th>commande back</th>
-                                <th>nombre de /home</th>
-                            </tr>
-                        </thead>
-                    <tbody>";
+        $content = "<div class='wrapper-table'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>prénom</th>
+                                    <th>nom</th>
+                                    <th>pseudo</th>
+                                    <th>montant du don</th>
+                                    <th>date du don</th>
+                                    <th>durée du premium</th>
+                                    <th>fin du premium</th>
+                                    <th>décisionnaire</th>
+                                    <th>commande back</th>
+                                    <th>nombre de /home</th>
+                                </tr>
+                            </thead>
+                        <tbody>";
                 
         foreach ($datas as $value) {
             $content .= "<tr>
@@ -54,7 +55,7 @@ class ControllerPremium
                         </tr>";
         }
                                     
-        $content .= "</tbody></table>";
+        $content .= "</tbody></table></div>";
         
         $this->tableContent = $content;
     }
