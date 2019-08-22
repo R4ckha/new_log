@@ -1,2 +1,5 @@
+# Jetbrains IDE
+.idea
+
 src/models/Model.php
 src/conf.php

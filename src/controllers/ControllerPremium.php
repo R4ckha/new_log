@@ -34,7 +34,7 @@ class ControllerPremium
                                     <th>fin du premium</th>
                                     <th>décisionnaire</th>
                                     <th>commande back</th>
-                                    <th>nombre de /home</th>
+                                    <th colspan='2'>nombre de /home</th>
                                 </tr>
                             </thead>
                         <tbody>";
@@ -52,6 +52,7 @@ class ControllerPremium
                             <td>{$value->isDecisionMaker}</td>
                             <td>{$value->slashBack}</td>
                             <td>{$value->numberHome}</td>
+                            <td>edit</td>
                         </tr>";
         }
                                     
