@@ -3,13 +3,23 @@
 class ControllerPremium
 {
     public $tableContent;
+    private $userManager;
 
     public function __construct()
     {
         $premiumUsers = new PremiumManager();
+        $this->userManager = new UserManager();
+
         $users = $premiumUsers->getAllPremium();
         $content = $this->getTable($users);
-        require_once 'src/views/viewPremium.php';
+        $user = $this->userManager->isConnectedUser();
+
+        if ( $user["isConnected"] ) {
+            require_once 'src/views/viewPremium.php';
+        } else {
+            require_once 'src/views/viewErrorConnect.php';
+        }
+        
     }
 
     public function getTable($datas)
@@ -34,13 +44,13 @@ class ControllerPremium
                                     <th>fin du premium</th>
                                     <th>décisionnaire</th>
                                     <th>commande back</th>
-                                    <th colspan='2'>nombre de /home</th>
+                                    <th>nombre de /home</th>
                                 </tr>
                             </thead>
                         <tbody>";
                 
         foreach ($datas as $value) {
-            $content .= "<tr>
+            $content .= "<tr class='premium-{$value->idUserPremium}'>
                             <td>{$value->idUserPremium}</td>
                             <td>{$value->name}</td>
                             <td>{$value->lastName}</td>
@@ -52,7 +62,7 @@ class ControllerPremium
                             <td>{$value->isDecisionMaker}</td>
                             <td>{$value->slashBack}</td>
                             <td>{$value->numberHome}</td>
-                            <td>edit</td>
+                            <td><i class='material-icons md-24'>edit</i></td>
                         </tr>";
         }
                                     
