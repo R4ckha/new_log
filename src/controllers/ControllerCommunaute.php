@@ -2,8 +2,11 @@
 
 class ControllerCommunaute
 {
+    private $userManager;
+    
     public function __construct()
     {
+        $this->userManager = new UserManager();
         $user = $this->userManager->isConnectedUser();
 
         if ( $user["isConnected"] ) {

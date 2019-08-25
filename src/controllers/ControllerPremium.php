@@ -11,8 +11,8 @@ class ControllerPremium
         $this->userManager = new UserManager();
 
         $users = $premiumUsers->getAllPremium();
-        $content = $this->getTable($users);
         $user = $this->userManager->isConnectedUser();
+        $content = $this->getTable($users);
 
         if ( $user["isConnected"] ) {
             require_once 'src/views/viewPremium.php';
