@@ -16,7 +16,7 @@ class Router
                 $controller = ucfirst(strtolower($url[0]));
                 $controllerClass =  'Controller'.$controller;
                 $controllerFile = 'src/controllers/'.$controllerClass.'.php';
-
+                
                 if (file_exists($controllerFile)) {
                     require_once($controllerFile);
                     $this->control = new $controllerClass($url);

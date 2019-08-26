@@ -40,7 +40,8 @@ abstract class Model extends Database
 
         if ( isset($userInfo['user_id']) && $userInfo['user_id'] != 1 ) {
             if ( $_SERVER['REMOTE_ADDR'] === $userInfo['session_ip'] && $userInfo['group_id'] === "9") {
-                $_SESSION['pseudo'] = $userInfo['pseudo'];
+                $_SESSION['user']['pseudo'] = $userInfo['pseudo'];
+                $_SESSION['user']['id'] = $userInfo['user_id'];
                 self::$pseudo = $userInfo['pseudo'];
 
                 return ["pseudo" => self::$pseudo, "isConnected" => true];

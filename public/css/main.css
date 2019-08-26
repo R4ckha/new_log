@@ -123,6 +123,28 @@ th {
     line-height: 1.4;
 }
 
+.wrapper-action-button {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.add-premium-button {
+    display: flex;
+    background: green;
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.add-premium-button i {
+    font-size: 64px;
+}
+
 @media screen and (max-width: 640px) {
 	nav {
 		flex-direction: column;
@@ -156,11 +178,8 @@ th {
 		top: 100px;
 		left: 0;
 		width: 100vw;
-	}
-}
-
-@media screen and (max-width: 992px) {
-
+    }
+    
     table {
         display: block;
     }

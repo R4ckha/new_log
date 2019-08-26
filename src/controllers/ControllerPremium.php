@@ -67,6 +67,8 @@ class ControllerPremium
         }
                                     
         $content .= "</tbody></table></div>";
+
+        $content .= "<div class='wrapper-action-button'><a href='/_impAdmin/imperalog/premiumform' class='add-premium-button'><i class='material-icons md-96'>add</i></a></div>";
         
         $this->tableContent = $content;
     }

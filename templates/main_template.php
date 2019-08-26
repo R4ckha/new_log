@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="nav-right">
-            <a href="#" class="disconnect-button">deconnexion( <?php echo $user['pseudo']; ?> )</a>
+            <a href="/_impAdmin/imperalog/destroy" class="disconnect-button">deconnexion( <?php echo $user['pseudo']; ?> )</a>
         </div>
     </nav>
     <?php echo $content; ?>
