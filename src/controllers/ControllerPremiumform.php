@@ -10,12 +10,12 @@ class ControllerPremiumForm
 
     public function __construct()
     {
+        $this->userManager = new UserManager();
         $this->users();
     }
 
     private function users()
     {
-        $this->userManager = new UserManager();
         $user = $this->userManager->isConnectedUser();
 
         if ( $user["isConnected"] ) {

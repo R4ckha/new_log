@@ -11,14 +11,14 @@ class ControllerHome
         if (isset($url) && count($url) > 1) {
             throw new Exception('Page introuvable');
         } else {
-            // Appel la méthode qui determine si l'utilisateur à le droit d'afficher la vue
+			// Appel la méthode qui determine si l'utilisateur à le droit d'afficher la vue
+			$this->userManager = new UserManager();
             $this->users();
         }
     }
 
     private function users()
     {
-        $this->userManager = new UserManager();
         // récupère tout les utilisateurs (inutiles ici)
         $usersArray = $this->userManager->getUser();
 
