@@ -39,7 +39,12 @@ abstract class Model extends Database
         $requestSession->closeCursor();
 
         if ( isset($userInfo['user_id']) && $userInfo['user_id'] != 1 ) {
-            if ( $_SERVER['REMOTE_ADDR'] === $userInfo['session_ip'] && $userInfo['group_id'] === "9") {
+			$sessionIp = implode('.', array_slice(explode('.', $_SERVER['REMOTE_ADDR']), 0, 3));
+			$remoteIp = implode('.', array_slice(explode('.', $userInfo['session_ip']), 0, 3));
+			
+			echo "ip de session = {$userInfo['session_ip']}<br>";
+			echo "ip connexion = {$_SERVER['REMOTE_ADDR']}<br>";
+            if ( $sessionIp === $remoteIp && $userInfo['group_id'] === "9") {
                 $_SESSION['user']['pseudo'] = $userInfo['pseudo'];
                 $_SESSION['user']['id'] = $userInfo['user_id'];
                 self::$pseudo = $userInfo['pseudo'];

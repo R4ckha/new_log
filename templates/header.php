@@ -14,8 +14,8 @@
             <div class="dropdown">
                 <button class="menu-button">menu</button>
                 <div class="dropdown-content">
-                    <a href="/_impAdmin/imperalog/premium">premium</a>
-                    <a href="/_impAdmin/imperalog/communaute">communauté</a>
+                    <a href="/imperalog/premium">premium</a>
+                    <a href="/imperalog/communaute">communauté</a>
                     <a href="#">autre lien</a>
                 </div>
             </div>

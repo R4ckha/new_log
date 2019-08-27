@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-body {
+body, p {
     margin: 0;
-    padding: 0;
+	padding: 0;
 }
 
 a {
@@ -145,6 +145,40 @@ th {
     font-size: 64px;
 }
 
+.form-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.form-wrapper form {
+	display: flex;
+	flex-direction: column;
+	width: 30vw;
+}
+
+.form-wrapper form input {
+    height: 35px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.error {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin: 10px 30%;
+    padding: 0 20px;
+	background: #ff00003b;
+    border: 1px solid #ff9d9d;
+    border-radius: 2px;
+    color: #b92a2a;
+}
+
+.error i{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 640px) {
 	nav {
 		flex-direction: column;
@@ -250,5 +284,14 @@ th {
     }
     table tbody tr td:nth-child(11):before {
         content: "/nome";
-    }
+	}
+	
+	.error {
+		margin: 10px;
+	}
+
+	.form-wrapper form{
+		width: 90vw;
+    	margin-top: 20px;
+	}
 }

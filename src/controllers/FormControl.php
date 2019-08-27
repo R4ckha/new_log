@@ -65,7 +65,7 @@ class FormControl
             case 'donation_amount':
 				$value = (float) preg_replace('/([,. ])/','.',$value);
 				if ( !is_numeric($value) || $value <= 0) {
-					array_push($this->errors, ['errorInputNo'=>3, 'errorInputMessage'=>'La valeur doit être numérique et supérieur à 0']);
+					array_push($this->errors, ['errorInputNo'=>3, 'errorInputMessage'=>'Le montant doit être numérique et supérieur à 0']);
 				}
                 break;
         }

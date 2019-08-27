@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./public/css/main.css">
+	<link rel="stylesheet" href="./public/css/main.css">
+	<script src="./public/js/main.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <title><?php echo TITLE; ?></title>
@@ -16,8 +17,8 @@
             <div class="dropdown">
                 <button class="menu-button">menu</button>
                 <div class="dropdown-content">
-                    <a href="/_impAdmin/imperalog/premium">premium</a>
-                    <a href="/_impAdmin/imperalog/communaute">communauté</a>
+                    <a href="/imperalog/premium">premium</a>
+                    <a href="/imperalog/communaute">communauté</a>
                     <a href="#">autre lien</a>
                 </div>
             </div>

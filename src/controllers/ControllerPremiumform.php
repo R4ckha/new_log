@@ -26,7 +26,7 @@ class ControllerPremiumForm
                 $this->validation = new FormControl($_POST);
 				$dataValid = $this->validation->isValid();
                 if ( $dataValid[0] ) {
-					header("Location:/_impAdmin/imperalog/premium");
+					header("Location:/imperalog/premium");
                 } else {
 					foreach ($dataValid[1] as $key => $value) {
 						if ($key === 0) {
