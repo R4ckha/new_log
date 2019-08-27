@@ -23,10 +23,12 @@ abstract class Model extends Database
 
     protected function getUserSession($sessionId)
     {
-        $query = "SELECT u.user_id, u.group_id, u.username, s.session_ip, u.user_avatar
+        $query = "SELECT u.user_id, u.group_id, u.username, s.session_ip, u.user_avatar, j.pseudo 
                     FROM `phpbb_sessions` s
                     JOIN `phpbb_users` u
                     ON u.user_id = s.session_user_id
+                    LEFT OUTER JOIN `votage_joueur` j
+                    ON j.idForum = u.user_id
                     WHERE session_id = :sessionId";
 
 
