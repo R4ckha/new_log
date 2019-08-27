@@ -24,12 +24,25 @@ class ControllerPremiumForm
 
             if(!empty($_POST)) {
                 $this->validation = new FormControl($_POST);
-
-                if ( $this->validation->isValid() ) {
-                    var_dump($this->validation->isValid());
-                    require_once 'src/controllers/ControllerPremium.php';
+				$dataValid = $this->validation->isValid();
+                if ( $dataValid[0] ) {
+					header("Location:/_impAdmin/imperalog/premium");
                 } else {
-                    var_dump("passe pas");
+					foreach ($dataValid[1] as $key => $value) {
+						if ($key === 0) {
+							$content = "<div class='error'>
+											<p>{$dataValid[1][$key]['errorInputMessage']}</p>
+											<i class='material-icons md-24'>clear</i>
+										</div>";
+						} else {
+							$content .= "<div class='error'>
+											<p>{$dataValid[1][$key]['errorInputMessage']}</p>
+											<i class='material-icons md-24'>clear</i>
+										</div>";
+						}
+					}
+					$content .= $this->premiumForm->insertForm();
+                	require_once 'src/views/viewPremiumForm.php';
                 }
             } else {
                 // Si le formulaire n'as pas été envoyé

@@ -3,11 +3,6 @@
 class FormControl
 {   
     private $datas;
-    private $name;
-    private $lastName;
-    private $pseudo;
-    private $donationAmount;
-    private $paymentDate;
     public  $errors = [];
 
     public function __construct($datas)
@@ -18,12 +13,16 @@ class FormControl
     public function isValid()
     {   
         if ( $this->isTokenValid() ) {
-            //$this->hydrate($this->datas);
+
             if ( $this->checkForm($this->datas) ) {
-                // ici on envois à la classe modele qui va faire l'insertion
+				// ici on envois à la classe modele qui va faire l'insertion
+				$formToBdd = new PremiumFormModel();
+				$formToBdd->send($this->datas, 'nl_users_premium');
+				//return [true]; // my bad
             } else {
-                return ["errorNo"=>2, "errorMessage"=>"Une erreur s'est glissée dans la saisie"];
-            }
+                return [false, $this->errors];
+			}
+			
         } else {
             return ["errorNo"=>1, "errorMessage"=>"Le jeton d'accès n'est pas valide"];
         }
@@ -33,11 +32,18 @@ class FormControl
     {
         foreach($data as $key => $value){
             if ($key != 'token' && $key != 'id_user') {
+				// On économise une instruction dans le switch case en assignant la même clé au format identique
                 $key = $key == 'name' ? 'last_name' : $key;
                 $this->checkFormat($value, $key);
             }
-        }
-        return true;
+		}
+
+		// On vérifie que le tableau d'erreurs ne contient pas d'erreurs 
+		if ( empty($this->errors) ) {
+			return true;
+		} else {
+			return false;
+		}
     }
 
     private function checkFormat($value, $key)
@@ -45,64 +51,24 @@ class FormControl
         switch ($key) {
             case 'last_name':
                 if (!preg_match('/^[\w][\p{L}-]*$/',$value)) {
-                    $this->error = ['errorInputNo'=>1, 'errorInputMessage'=>'Le nom ou le prénom n\'est pas dans un format valide'];
+					array_push($this->errors, ['errorInputNo'=>1, 'errorInputMessage'=>'Le nom ou le prénom n\'est pas dans un format valide']);
                 }
                 break;
             
             case 'pseudo':
-                # code...
+				$value = strip_tags($value);
+				if ( empty($value) ) {
+					array_push($this->errors, ['errorInputNo'=>2, 'errorInputMessage'=>'Le pseudo contient des caractères interdits']);
+				}
                 break;
             
             case 'donation_amount':
-                # code...
-                break;
-            
-            case 'payment_date':
-                # code...
-                break;
-            
-            default:
-                # code...
+				$value = (float) preg_replace('/([,. ])/','.',$value);
+				if ( !is_numeric($value) || $value <= 0) {
+					array_push($this->errors, ['errorInputNo'=>3, 'errorInputMessage'=>'La valeur doit être numérique et supérieur à 0']);
+				}
                 break;
         }
-    }
-
-    private function hydrate($data)
-    {        
-        foreach($data as $key => $value){
-            $method = 'set'.(str_replace('_', '', ucwords($key, '_')));
-            
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
-    }
-
-    public function setName($name)
-    {
-        $this->name = (string) ucfirst($name);
-    }
-
-    public function setLastName($lastName)
-    {
-        $this->lastName = (string) ucfirst($lastName);
-    }
-
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = (string) $pseudo;
-    }
-
-    public function setDonationAmount($donationAmount)
-    {
-        if (is_numeric($donationAmount)) {
-            $this->donationAmount = (float) preg_replace('/([,. ])/','.',$donationAmount);
-        }
-    }
-
-    public function setPaymentDate($paymentDate)
-    {
-        $this->paymentDate = date('Y-m-d',strToTime(preg_replace('([./ ])','-',$paymentDate)));
     }
 
     private function isTokenValid()

@@ -18,7 +18,6 @@ class PremiumForm
                         <input type='text' name='name' placeholder='prenom'>
                         <input type='text' name='pseudo' placeholder='pseudo'>
                         <input type='text' name='donation_amount' placeholder='montant'>
-                        <input type='text' name='payment_date' placeholder='date'>
                         <input type='hidden' name='id_user' value='{$_SESSION['user']['id']}'>
                         <input type='hidden' name='token' value='{$this->token}'>
                         <input type='submit' value='ajouter un membre'>
