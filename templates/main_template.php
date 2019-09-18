@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./public/css/main.css">
+	<link rel="stylesheet" href="./public/css/main.css">
+	<script src="./public/js/main.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <title><?php echo TITLE; ?></title>
 </head>
 <body>
@@ -21,6 +24,9 @@
             </div>
         </div>
         <div class="nav-right">
-            <a href="#" class="disconnect-button">deconnexion( <?php echo $user['pseudo']; ?> )</a>
+            <a href="/_impAdmin/imperalog/destroy" class="disconnect-button">deconnexion( <?php echo $user['pseudo']; ?> )</a>
         </div>
     </nav>
+    <?php echo $content; ?>
+</body>
+</html>

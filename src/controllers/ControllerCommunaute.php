@@ -4,6 +4,12 @@ class ControllerCommunaute
 {
     public function __construct()
     {
-        require_once 'src/views/viewCommunaute.php';
+        $user = $this->userManager->isConnectedUser();
+
+        if ( $user["isConnected"] ) {
+            require_once 'src/views/viewCommunaute.php';
+        } else {
+            require_once 'src/views/viewErrorConnect.php';
+        }
     }
 }
